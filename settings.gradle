@@ -1,0 +1,19 @@
+pluginManagement {
+    resolutionStrategy {}
+    repositories {
+        gradlePluginPortal()
+        maven {
+            def branch = System.getProperty("branch") ?: "master"
+            def repo = branch == "master" ? "xsio-test" : "xsio-jar"
+            url "http://nexus.xsio.cn/repository/${repo}"
+            allowInsecureProtocol true
+            credentials {
+                username mavenUser
+                password mavenPassword
+            }
+        }
+    }
+}
+
+rootProject.name = 'mango'
+

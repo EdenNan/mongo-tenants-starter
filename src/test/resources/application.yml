@@ -1,0 +1,12 @@
+server:
+  port: 7890
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: admin
+      username: test
+      password: test
+
