@@ -1,15 +1,12 @@
 buildscript {
     ext {
         springBootVersion = '2.4.5'
-        convertlabGradleConventionVersion = '2021112401'
         branch = System.getProperty("branch") ?: "master"
     }
 }
 
 plugins {
     id 'org.springframework.boot' version "${springBootVersion}" apply false
-    id 'com.convertlab.convention.repositories-declaration' version "${convertlabGradleConventionVersion}"
-    id 'com.convertlab.convention.application' version "${convertlabGradleConventionVersion}"
     id 'java'
     id 'java-library'
 }
@@ -17,14 +14,8 @@ plugins {
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.springframework.boot'
 
-group 'com.convertlab.application'
 version '1.0-SNAPSHOT'
 
-dependencyManagement {
-    imports {
-        mavenBom "com.convertlab.library:dependencies:2021112401"
-    }
-}
 
 configurations.all {
     resolutionStrategy {
@@ -44,16 +35,13 @@ test {
 
 
 dependencies {
-    compileOnly "com.convertlab.library:spring-boot-multi-tenancy:${branch}.+"
-    implementation "com.convertlab.library:spring-boot-commons:${branch}.+"
-    api 'org.springframework.boot:spring-boot-starter-data-mongodb'
-    implementation "org.projectlombok:lombok"
-    annotationProcessor "org.projectlombok:lombok"
+    api 'org.springframework.boot:spring-boot-starter-data-mongodb:2.6.1'
+    implementation 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
 
-    testImplementation "com.convertlab.library:spring-boot-multi-tenancy:${branch}.+"
-    testImplementation "org.projectlombok:lombok"
-    testAnnotationProcessor "org.projectlombok:lombok"
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.projectlombok:lombok:1.18.22'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.1'
 }
 
 test {

@@ -1,1 +1,5 @@
 # mongo
+对spring-data-mongo-starter改造以支持多租户
+
+在代码中把$tenantId替换成自己获取tenantId的方式即可，starter会额外生成一个TenantAwareMongoTemplate的bean
+对这个bean的读写操作都会增加tenantId的校验，具体可看test测试用例

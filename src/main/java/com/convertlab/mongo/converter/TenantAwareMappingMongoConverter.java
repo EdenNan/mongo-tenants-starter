@@ -1,6 +1,5 @@
 package com.convertlab.mongo.converter;
 
-import com.convertlab.library.multitenancy.context.TenantContextHolder;
 import com.mongodb.DBObject;
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -84,12 +83,12 @@ public class TenantAwareMappingMongoConverter extends MappingMongoConverter {
     private static void addTenantIdToMap(Bson bson) {
 
         if (bson instanceof Document) {
-            ((Document) bson).put("tenantId", TenantContextHolder.getTenant());
+            ((Document) bson).put("tenantId", "$tenantId");
             return;
         }
 
         if (bson instanceof DBObject) {
-            ((DBObject) bson).put("tenantId",TenantContextHolder.getTenant());
+            ((DBObject) bson).put("tenantId","$tenantId");
             return;
         }
 

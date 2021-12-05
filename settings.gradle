@@ -15,5 +15,5 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'mango'
+rootProject.name = 'mongo'
 

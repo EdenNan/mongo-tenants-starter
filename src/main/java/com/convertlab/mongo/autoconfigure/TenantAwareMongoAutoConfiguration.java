@@ -1,11 +1,9 @@
 package com.convertlab.mongo.autoconfigure;
 
-import com.convertlab.library.condition.MultiTenancyEnableCondition;
 import com.convertlab.mongo.converter.TenantAwareMappingMongoConverter;
 import com.convertlab.mongo.queryMapper.TenantAwareQueryMapper;
 import com.convertlab.mongo.template.TenantAwareMongoTemplate;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.MongoDatabaseFactory;
 import org.springframework.data.mongodb.core.convert.DbRefResolver;
@@ -14,7 +12,6 @@ import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
 import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
 
 @Configuration(proxyBeanMethods = false)
-@Conditional(MultiTenancyEnableCondition.class)
 public class TenantAwareMongoAutoConfiguration {
 
     @Bean

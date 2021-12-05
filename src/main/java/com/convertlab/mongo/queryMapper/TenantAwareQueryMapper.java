@@ -1,6 +1,5 @@
 package com.convertlab.mongo.queryMapper;
 
-import com.convertlab.library.multitenancy.context.TenantContextHolder;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.springframework.data.mongodb.core.convert.MongoConverter;
@@ -21,7 +20,7 @@ public class TenantAwareQueryMapper extends QueryMapper {
     @Override
     public Document getMappedObject(Bson query, @Nullable MongoPersistentEntity<?> entity) {
         Document document = super.getMappedObject(query, entity);
-        document.put("tenantId", TenantContextHolder.getTenant());
+        document.put("tenantId", "$tenantId");
         return document;
     }
 }
